@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
-// import logo from './logo.svg';
-import './App.scss';
-import CommonHeader from './views/common_header'
-import Content from './views/content'
-import {ThemContext} from './context'
-import context from './context/context.js'
+import './App.scss'
+import SliderList from './views/conpoments/slider_list'
+import Router from './routers'
 
 class App extends Component {
   render() {
     return (
-      <ThemContext.Provider value={context}>
         <div className="App">
-            <CommonHeader></CommonHeader>
-            <Content></Content>
+            <SliderList></SliderList>
+            <div className="nav-right">
+              <Router></Router>
+            </div>
         </div>
-      </ThemContext.Provider>
     );
   }
 }
 
-export default App;
+export default App

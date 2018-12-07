@@ -1,0 +1,40 @@
+.slider-list{
+  width: 150px;
+  height: 100%;
+  background: #1A5FD1;
+  padding-top: 40px;
+  box-sizing: border-box;
+  flex: none;
+  .list-item{
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon{
+      width: 18px;
+      height: 18px;
+      flex: none;
+      margin-right: 10px;
+    }
+    .icon-teacher{
+      background: url(../../images/common/icon_course.png) no-repeat;
+    }
+    .icon-folder{
+      background: url(../../images/common/icon_courseware.png) no-repeat;
+    }
+    .icon-store{
+      background: url(../../images/common/icon_homework.png) no-repeat;
+    }
+  }
+  .list-item:hover{
+    background-color: rgba($color: #fff, $alpha: .2);
+  }
+  .is-select{
+    background-color: rgba($color: #fff, $alpha: .2);
+  }
+}
