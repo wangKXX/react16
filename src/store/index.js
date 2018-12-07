@@ -1,10 +1,20 @@
-import {observer, action} from 'mobx';
+import {observable, action, computed} from 'mobx';
 
 class Store{
-  @observer count = 0;
-  @action set_count = (num) => {
+  @observable count = 0
+  @observable storeList = []
+  @action set_count = num => {
     this.count = num
+  }
+  @action set_store_list = () => {
+    this.storeList.push({
+      name: 'Tom',
+      age: parseInt(Math.random() * 100)
+    })
+  }
+  @computed get personTotal() {
+    return this.storeList.length
   }
 }
 
-export default Store
+export default new Store()
