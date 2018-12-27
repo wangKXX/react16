@@ -12,7 +12,7 @@ class App extends Component {
               <Router></Router>
             </div>
         </div>
-    );
+    )
   }
 }
 

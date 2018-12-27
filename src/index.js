@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './store'
 import { Provider } from 'mobx-react'
 import { BrowserRouter } from "react-router-dom";
+import 'normalize.css'
 
 ReactDOM.render(
 <BrowserRouter>
