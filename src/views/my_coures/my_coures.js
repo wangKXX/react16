@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
 import Report from '../conpoments/report'
 import Calender from '../conpoments/calender'
 import './index.scss'
+
+@inject('store')
+@observer
 class MyCoures extends Component{
   constructor(props) {
     super(props)
@@ -9,7 +13,8 @@ class MyCoures extends Component{
       reportConfig: {
         name: '最新公告',
         url: 'www.baidu.com'
-      }
+      },
+      selectedDate: new Date(0)
     }
   }
   render() {
@@ -17,10 +22,23 @@ class MyCoures extends Component{
       <div className="my-coures">
         <Report reportConfig={this.state.reportConfig}></Report>
         <div className="my-coures-content">
-        <Calender></Calender>
+        <Calender cb={this.cb}></Calender>
+        <div className="content-right">
+          <div className="count-show">
+            <span>{`${this.state.selectedDate.getMonth() + 1}月${this.state.selectedDate.getDate()}日`}</span>
+            <span>{`共${this.props.store.couresCount}节课`}</span>
+          </div>
+        </div>
         </div>
       </div>
     )
+  }
+
+  cb = (item) => {
+    this.setState({
+      selectedDate: new Date(item)
+    })
+    this.props.store.set_coures_count(5)
   }
 }
 

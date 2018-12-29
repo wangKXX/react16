@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import html2canvas from 'html2canvas'
-import saveAs from 'file-saver'
+// import saveAs from 'file-saver'
 import './index.scss'
 class MyCourware extends Component{
   constructor(props) {
@@ -12,8 +12,7 @@ class MyCourware extends Component{
   render() {
     return (<div>
       <button onClick={() => this.handlerCut()}>截屏</button>
-      <iframe src="http://www.jq22.com/jquery-info18038" width="300" height="500"></iframe>
-      <img src={this.state.imageUrl}/>
+      <img src={this.state.imageUrl} alt="空"/>
     </div>)
   }
   handlerCut() {

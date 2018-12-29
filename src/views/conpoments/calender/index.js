@@ -15,7 +15,8 @@ class Calender extends Component{
       weekEnd,
       currentAllDay: this.getMonthAllDay(),
       firstDayWeek: 0,
-      allDays: [], 
+      allDays: [],
+      selectedDate: (new Date()).getDate()
     }
   }
 
@@ -39,7 +40,7 @@ class Calender extends Component{
         </ul>
         <ul className="week-wrap">
         {
-          this.state.allDays.map((item, index) => <li className="week-item" key={index}>{item === 0 ? '' : item}</li>)
+          this.state.allDays.map((item, index) => <li className={["week-item", item === 0 ? '' : 'hover-item', this.state.selectedDate === item ? 'isSelected' : '' ].join(" ")} key={index} onClick={() => this.setSelectItem(item)}>{item === 0 ? '' : item}</li>)
         }
         </ul>
       </div>
@@ -92,44 +93,17 @@ class Calender extends Component{
     const date = new Date()
     date.setFullYear(Year)
     date.setMonth(Month - 1)
-    this.dealYear = date.getFullYear()
-    this.dealMonth = Month - 1
-    this.setState({
-      currentMonth: Month - 1,
-      currentYear: Year
-    })
     date.setDate(0)
     this.setState({
       currentAllDay: date.getDate()
     })
-    if (Month === 1) {
-      // date.setMonth(-1)
-      this.dealYear = date.getFullYear()
-      this.dealMonth = date.getMonth()
-      this.setState({
-        currentMonth: date.getMonth() + 1,
-        currentYear: this.dealYear
-      })
-      date.setDate(1)
-      this.setState({
-        firstDayWeek: date.getDay() === 0 ? 6 : date.getDay() - 1
-      },() => {
-        this.delAllDays()
-      })
-      return
-    }
-    if (Year > this.dealYear) {
-      // this.dealYear = this.dealYear
-      // date.setFullYear(this.dealYear)
-      // this.setState({
-      //   currentMonth: date.getMonth() + 1,
-      //   currentYear: this.dealYear
-      // })
-    } else if (Year < this.dealYear) {
-      this.dealYear = Year
-      date.setFullYear(Year)
-    }
-    date.setMonth(Month - 2, 1)
+    this.dealYear = date.getFullYear()
+    this.dealMonth = date.getMonth() + 1
+    this.setState({
+      currentMonth: date.getMonth() + 1,
+      currentYear: this.dealYear
+    })
+    date.setDate(1)
     this.setState({
       firstDayWeek: date.getDay() === 0 ? 6 : date.getDay() - 1
     },() => {
@@ -163,6 +137,26 @@ class Calender extends Component{
     },() => {
       this.delAllDays()
     })
+  }
+
+  setSelectItem(item) {
+    if (item === 0) {
+      return
+    }
+    this.setState({
+      selectedDate: item
+    })
+    const Year = this.state.currentYear
+    const Month = this.state.currentMonth
+    const date = new Date()
+    date.setFullYear = Year
+    date.setMonth = Month
+    date.setDate(item)
+    const time = date.getTime()
+    const cb = this.props.cb
+    if (cb) {
+      cb(time)
+    }
   }
 }
 
