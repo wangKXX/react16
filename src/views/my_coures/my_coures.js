@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Report from '../conpoments/report'
 import Calender from '../conpoments/calender'
+import './index.scss'
 class MyCoures extends Component{
   constructor(props) {
     super(props)
