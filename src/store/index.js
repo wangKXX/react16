@@ -4,6 +4,8 @@ class Store{
   @observable count = 0
   @observable storeList = []
   @observable couresCount = 0
+  @observable couresList = []
+
   @action set_count = num => {
     this.count = num
   }
@@ -15,6 +17,9 @@ class Store{
   }
   @action set_coures_count = count => {
     this.couresCount = count
+  }
+  @action set_course_list = list => {
+    this.couresList = list
   }
   @computed get personTotal() {
     return this.storeList.length

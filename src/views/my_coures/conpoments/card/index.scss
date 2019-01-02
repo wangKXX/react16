@@ -1,0 +1,82 @@
+.card{
+  display: flex;
+  align-items: center;
+  border: 1px solid #4285F4;
+  border-radius: 6px;
+  height: 195px;
+  width: 620px;
+  margin-bottom: 20px;
+  flex: none;
+  .card-left{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    background-image: linear-gradient(-45deg, #00CFFA 0%, #4285F4 100%);
+    color: #fff;
+    width: 110px;
+    height: 100%;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    .time-state{
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+  .card-right{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px 0;
+    width: 100%;
+    .card-r-top{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      padding-right: 20px;
+      flex: none;
+      .card-r-top-left{
+        display: flex;
+        img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        .card-msg-wrap{
+          padding: 0 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+}
+.card-btm{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(216, 216, 216, 0.5); 
+  box-sizing: border-box;
+  padding-right: 10px;
+  .btn{
+    margin-right: 20px;
+  }
+}
+
+.nick{
+  font-size: 14px;
+}
+.msg-wrap{
+  font-size: 12px;
+  color: #999;
+  margin-top: 15px;
+}
+.grade{
+  margin-right: 20px;
+}

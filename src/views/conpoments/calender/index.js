@@ -149,8 +149,8 @@ class Calender extends Component{
     const Year = this.state.currentYear
     const Month = this.state.currentMonth
     const date = new Date()
-    date.setFullYear = Year
-    date.setMonth = Month
+    date.setFullYear(Year)
+    date.setMonth(Month - 1)
     date.setDate(item)
     const time = date.getTime()
     const cb = this.props.cb

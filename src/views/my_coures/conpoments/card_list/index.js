@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import './index.scss'
 import Card from '../card'
 
 @inject('store')
 @observer
 class CardList extends Component{
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div className="coures_list">

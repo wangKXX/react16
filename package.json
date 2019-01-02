@@ -6,6 +6,7 @@
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -79,7 +80,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.2.0"
+    "@babel/plugin-proposal-decorators": "^7.2.0",
+    "mockjs": "^1.0.1-beta3"
   },
   "jest": {
     "collectCoverageFrom": [
