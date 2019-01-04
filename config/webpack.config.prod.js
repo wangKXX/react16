@@ -21,6 +21,9 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
+
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -224,6 +227,8 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      'common': path.resolve(__dirname, '../src/common'),
+      'api': path.resolve(__dirname, '../src/api')
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -459,6 +464,23 @@ module.exports = {
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
     // Otherwise React will be compiled in the very slow development mode.
+    new PrerenderSPAPlugin({
+      // Index.html is in the root directory.
+      staticDir: path.join(__dirname, '..', 'build'),
+      routes: [ '/' ],
+      // Optional minification.
+      minify: {
+        collapseBooleanAttributes: true,
+        collapseWhitespace: true,
+        decodeEntities: true,
+        keepClosingSlash: true,
+        sortAttributes: true
+      },
+
+      renderer: new Renderer({
+        renderAfterTime: 500
+      })
+    }),
     new webpack.DefinePlugin(env.stringified),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

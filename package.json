@@ -55,6 +55,7 @@
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-scoped-style": "^0.3.0",
     "resolve": "1.8.1",
     "sass-loader": "^7.1.0",
     "style-loader": "0.23.0",
@@ -81,7 +82,8 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.2.0",
-    "mockjs": "^1.0.1-beta3"
+    "mockjs": "^1.0.1-beta3",
+    "prerender-spa-plugin": "^3.4.0"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -136,5 +138,6 @@
         }
       ]
     ]
-  }
+  },
+  "proxy": {}
 }

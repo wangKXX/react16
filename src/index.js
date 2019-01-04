@@ -16,4 +16,10 @@ ReactDOM.render(
   </Provider>
 </BrowserRouter>
 , document.getElementById('root'));
+document.ondragover = (event) => {
+  event.preventDefault()
+}
+document.ondrop = (event) => {
+  event.preventDefault()
+}
 serviceWorker.unregister();

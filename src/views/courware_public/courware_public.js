@@ -10,7 +10,9 @@ class CourwarePublic extends Component{
   }
   render() {
     return (
-      <div>课件商城</div>
+      <div>
+        课件商城
+      </div>
     )
   }
 }

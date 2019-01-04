@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import {observer, inject} from 'mobx-react'
 import './index.scss'
+@inject('store')
+@observer
 class Card extends Component{
   constructor(props) {
     super(props)
@@ -46,16 +49,18 @@ class Card extends Component{
                 </div>
               </div>
             </div>
-
             <div className="tr-main-btn">进入教室</div>
           </div>
-
           <div className="card-btm">
-          <div className="comm-btn btn">添加作业</div><div className="comm-btn">选择作业</div>
+          <div className="comm-btn btn" onClick={() => this.addHomeWork()}>添加作业</div><div className="comm-btn">选择作业</div>
           </div>
         </div>
       </div>
     )
+  }
+  addHomeWork() {
+    console.trace()
+    this.props.store.set_upload_is_show(true)
   }
 }
 export default Card

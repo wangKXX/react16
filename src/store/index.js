@@ -5,6 +5,7 @@ class Store{
   @observable storeList = []
   @observable couresCount = 0
   @observable couresList = []
+  @observable isShowUpload = false
 
   @action set_count = num => {
     this.count = num
@@ -20,6 +21,9 @@ class Store{
   }
   @action set_course_list = list => {
     this.couresList = list
+  }
+  @action set_upload_is_show = isShow => {
+    this.isShowUpload = isShow
   }
   @computed get personTotal() {
     return this.storeList.length

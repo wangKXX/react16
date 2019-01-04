@@ -1,8 +1,9 @@
 import axios from 'axios'
 
 export default function getInstance(options = {}) {
-  
-  const instance = axios.create()
+  let config = {}
+  config = Object.assign(options, config)
+  const instance = axios.create(config)
   instance.interceptors.request.use(function(request) {
     return request
   })
