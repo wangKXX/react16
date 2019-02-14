@@ -46,12 +46,12 @@ class MyCoures extends Component{
     getCoures().then((response) => {
       const { data } = response
       if (response.status === 200) {
-        this.props.store.set_course_list(data.data) 
+        this.props.store.set_course_list(data.data)
+        this.props.store.set_coures_count(data.data.length)
       }
     }).catch((error) => {
       alert(error)
     })
-    this.props.store.set_coures_count(5)
   }
 }
 

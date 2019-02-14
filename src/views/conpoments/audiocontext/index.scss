@@ -1,0 +1,20 @@
+.audio-wrap{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px;
+  background-color: #666;
+  height: 80px;
+  width: 100%;
+  .audio-btn{
+    width: 31px;
+    height: 31px;
+    cursor: pointer;
+    &.pause{
+      background: url(./images/play.png) no-repeat 0 0;
+    }
+    &.playing{
+      background: url(./images/stop.png) no-repeat 0 0;
+    }
+  }
+}
