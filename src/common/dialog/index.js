@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import { Icon } from 'antd'
 import './index.scss'
 @inject('store')
 @observer
@@ -13,8 +14,8 @@ class dialog extends Component{
       <div className="dialog-wrap">
         <div className="common-dialog">
           <div className="dialog-header">
-            <span>提示</span>
-            <span className="dialog-close" onClick={this.handlerClose}>close</span>
+            <span><Icon type="warning" theme="twoTone" />  提示</span>
+            <span className="dialog-close" onClick={this.handlerClose}><Icon type="close-circle" theme="twoTone" /></span>
           </div>
           { this.props.children }
         </div>

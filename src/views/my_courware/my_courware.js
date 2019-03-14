@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Dialog from 'common/dialog'
 import { observer, inject } from 'mobx-react'
 import './index.scss'
-import { Button, Icon } from 'antd'
+import { Button } from 'antd'
 @observer
 @inject('store')
 class MyCourware extends Component{
@@ -28,7 +28,7 @@ class MyCourware extends Component{
       {
         this.state.isShow && <Dialog onClose={this.handlerHideClick}>
           <div className="dialog-content">
-            <Icon type="warning" theme="twoTone" /> 警告
+             警告
           </div>
           <div className="dialog-foot">
             <Button type="primary" onClick={this.handlerHideClick}>确认</Button>
