@@ -5,7 +5,6 @@ import Calender from '../conpoments/calender'
 import CardList from './conpoments/card_list'
 import './index.scss'
 import { getCoures } from '../../api'
-
 @inject('store')
 @observer
 class MyCoures extends Component{
