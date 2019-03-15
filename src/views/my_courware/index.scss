@@ -1,8 +1,30 @@
-img{
-  width: 800px;
-}
 .dialog-foot{
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
+}
+.grid-box{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-gap: 2px;
+  width: 100%;
+  height: 100%;
+}
+.grid-b{
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-b:nth-of-type(1) {
+  grid-column: 1 / 4;
+}
+.grid-b:nth-of-type(2) {
+  grid-row: 2 / 4;
+}
+.my-courware{
+  width: 100%;
+  height: 100%;
 }

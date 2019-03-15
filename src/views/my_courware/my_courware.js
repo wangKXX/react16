@@ -23,8 +23,19 @@ class MyCourware extends Component{
     })
   }
   render() {
-    return (<div>
-      <Button type="primary" onClick={this.handlerShowClick}>dialog</Button>
+    return (
+      <div className="my-courware">
+      <div className="grid-box">
+        <div className="grid-b"><Button type="primary" onClick={this.handlerShowClick}>dialog</Button></div>
+        <div className="grid-b">2</div>
+        <div className="grid-b">3</div>
+        <div className="grid-b">4</div>
+        <div className="grid-b">5</div>
+        <div className="grid-b">6</div>
+        <div className="grid-b">7</div>
+        <div className="grid-b">8</div>
+        <div className="grid-b">9</div>
+      </div>
       {
         this.state.isShow && <Dialog onClose={this.handlerHideClick}>
           <div className="dialog-content">
