@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import Dialog from 'common/dialog'
 import { observer, inject } from 'mobx-react'
 import './index.scss'
-import { Button } from 'antd'
+import { Button, PageHeader, Input } from 'antd'
+import CallBackRef from './conpoments/callbackrefs'
+const Search = Input.Search
 @observer
 @inject('store')
 class MyCourware extends Component{
@@ -11,7 +13,9 @@ class MyCourware extends Component{
     this.state = {
       isShow: props.store.isShowDialog
     }
+    this.callBackRef = React.createRef()
   }
+  isMouseDown = false
   handlerShowClick = () => {
     this.setState({
       isShow: true
@@ -22,19 +26,46 @@ class MyCourware extends Component{
       isShow: false
     })
   }
+  onBack = () => {
+    alert()
+  }
+  onSearch(val) {
+    console.log(this.callBackRef.current.textInput)
+  }
+  onMouseDown = (event) => {
+    this.isMouseDown = true
+    console.log(event.target.offsetLeft)
+  }
+  onMouseMove = (event) => {
+    if (this.isMouseDown) {
+      console.log(event.target.offsetLeft)
+    }
+  }
+  onMouseUp = () => {
+    this.isMouseDown = false
+  }
   render() {
     return (
       <div className="my-courware">
       <div className="grid-box">
-        <div className="grid-b"><Button type="primary" onClick={this.handlerShowClick}>dialog</Button></div>
-        <div className="grid-b">2</div>
-        <div className="grid-b">3</div>
-        <div className="grid-b">4</div>
-        <div className="grid-b">5</div>
-        <div className="grid-b">6</div>
-        <div className="grid-b">7</div>
-        <div className="grid-b">8</div>
-        <div className="grid-b">9</div>
+        <div className="grid-b">
+          <PageHeader
+          onBack={this.onBack}
+          title="我的课件"
+          ></PageHeader>
+        </div>
+        <div className="grid-b">
+        <Search
+        placeholder="课件名称/关键字"
+        onSearch={val => this.onSearch(val)}
+        enterButton
+        ></Search>
+        {/* <Button type="primary" onClick={this.handlerShowClick}>dialog</Button> */}
+        </div>
+        <div className="grid-b" onMouseDown={this.onMouseDown} onMouseMove={this.onMouseMove} onMouseUp={this.onMouseUp}></div>
+        <div className="grid-b">
+          <CallBackRef ref={this.callBackRef}></CallBackRef>
+        </div>
       </div>
       {
         this.state.isShow && <Dialog onClose={this.handlerHideClick}>
