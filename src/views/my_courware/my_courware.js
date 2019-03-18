@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { SettingContext, setting } from './conpoments/context/context_button'
 import Dialog from 'common/dialog'
 import { observer, inject } from 'mobx-react'
 import './index.scss'
 import { Button, PageHeader, Input } from 'antd'
 import CallBackRef from './conpoments/callbackrefs'
+import ButtonContext from './conpoments/context'
 const Search = Input.Search
 @observer
 @inject('store')
@@ -11,9 +13,17 @@ class MyCourware extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      isShow: props.store.isShowDialog
+      isShow: props.store.isShowDialog,
+      setting: setting.dark
     }
     this.callBackRef = React.createRef()
+    this.setSettingHandler = () => {
+      this.setState(state => ({
+        setting: state.setting === setting.dark
+          ? setting.light
+          : setting.dark 
+      }))
+    }
   }
   isMouseDown = false
   handlerShowClick = () => {
@@ -65,6 +75,9 @@ class MyCourware extends Component{
         <div className="grid-b" onMouseDown={this.onMouseDown} onMouseMove={this.onMouseMove} onMouseUp={this.onMouseUp}></div>
         <div className="grid-b">
           <CallBackRef ref={this.callBackRef}></CallBackRef>
+          <SettingContext.Provider value={this.state.setting}>
+            <ButtonContext changeHandler={this.setSettingHandler}/>
+          </SettingContext.Provider>
         </div>
       </div>
       {
