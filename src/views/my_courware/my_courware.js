@@ -6,6 +6,9 @@ import './index.scss'
 import { Button, PageHeader, Input } from 'antd'
 import CallBackRef from './conpoments/callbackrefs'
 import ButtonContext from './conpoments/context'
+import HigherCompoment from './conpoments/highercompoment'
+import Test from './conpoments/renderprops/test'
+
 const Search = Input.Search
 @observer
 @inject('store')
@@ -24,6 +27,7 @@ class MyCourware extends Component{
           : setting.dark 
       }))
     }
+    this.heigherRef = React.createRef()
   }
   isMouseDown = false
   handlerShowClick = () => {
@@ -40,7 +44,8 @@ class MyCourware extends Component{
     alert()
   }
   onSearch(val) {
-    console.log(this.callBackRef.current.textInput)
+    console.log(this.heigherRef.current)
+
   }
   onMouseDown = (event) => {
     this.isMouseDown = true
@@ -78,6 +83,8 @@ class MyCourware extends Component{
           <SettingContext.Provider value={this.state.setting}>
             <ButtonContext changeHandler={this.setSettingHandler}/>
           </SettingContext.Provider>
+          <HigherCompoment ref={this.heigherRef}></HigherCompoment>
+          <Test></Test>
         </div>
       </div>
       {

@@ -12,13 +12,19 @@ class App extends Component {
     super(props)
     this.state = {}
   }
+  static getDerivedStateFromError(error) {
+    // TODO 错误捕捉ui处理
+  }
+  componentDidCatch(error, info) {
+    console.error(error, info)
+  }
   render() {
     let isLogin = this.props.store.computedIsLogin;
     let ReturnConpoment = null;
     if (!isLogin) {
       ReturnConpoment = <LoginPage></LoginPage>;
     } else {
-      ReturnConpoment = <div className="App"><SliderList></SliderList><div className="nav-right"><Router></Router></div><UploadComponent></UploadComponent></div>;
+      ReturnConpoment = <><SliderList></SliderList><div className="nav-right"><Router></Router></div><UploadComponent></UploadComponent></>;
     }
     return (
       <div className="App">
