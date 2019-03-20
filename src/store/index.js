@@ -1,4 +1,5 @@
-import {observable, action, computed} from 'mobx';
+import { observable, action, computed, configure } from 'mobx';
+configure({ enforceActions: 'observed' }) // 不允许在动作外部修改状态
 
 class Store{
   @observable count = 0
@@ -43,6 +44,7 @@ class Store{
   @computed get computedIsShowDialog() {
     return this.isShowDialog
   }
+  
 }
 
 export default new Store()

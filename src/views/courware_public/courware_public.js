@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-// import Audio from '../conpoments/audiocontext'
-
+import { Route, withRouter } from "react-router-dom"
+import loadable from 'react-loadable'
+import loading from 'common/loading'
+import './index.scss'
+const CourwarePreview = loadable({
+  loader: () => import('../courware_preview'),
+  loading
+})
 @inject('store')
 @observer
 class CourwarePublic extends Component{
   constructor(props) {
     super(props)
-    this.state = {
-      url: 'https://m10.music.126.net/20190226182844/8ee529a9a269c7d8f7db62e75a050cc4/ymusic/8d9e/75eb/2d6f/76af90b7ba141b65b180d07447144757.mp3'
-    }
+    this.state = {}
   }
   render() {
     return (
-      <div>
-        {/* <Audio url={this.state.url}></Audio> */}
-        <video src="https://m10.music.126.net/20190226182844/8ee529a9a269c7d8f7db62e75a050cc4/ymusic/8d9e/75eb/2d6f/76af90b7ba141b65b180d07447144757.mp3" controls></video>
+      <div className="courware-public">
+        <button onClick={() => this.toPreview(1)}>点击跳转</button>
+        <Route path="/courware_public/preview/:id" component={CourwarePreview}></Route>
       </div>
     )
   }
+  toPreview(id) {
+    console.log(this.props)
+    this.props.history.push(`/courware_public/preview/${id}`)
+  }
 }
 
-export default CourwarePublic
+export default withRouter(CourwarePublic)

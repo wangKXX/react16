@@ -17,7 +17,7 @@ class loginPage extends Component{
         <div className="logo">
           <img src={logo} alt="空空"/>
         </div>
-        <Carousel afterChange={() => this.handlerChange()} ref={this.carouselRef}>
+        <Carousel afterChange={() => this.handlerChange()} ref={this.carouselRef} dots="false" infinite={false}>
           <div className="login-wrap">
               <Login goNext={this.goNextHandler}></Login>
           </div>

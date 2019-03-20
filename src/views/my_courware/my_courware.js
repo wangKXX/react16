@@ -8,10 +8,14 @@ import CallBackRef from './conpoments/callbackrefs'
 import ButtonContext from './conpoments/context'
 import HigherCompoment from './conpoments/highercompoment'
 import Test from './conpoments/renderprops/test'
+import MixinsTest from './conpoments/test'
 
+let mixinsTest = new MixinsTest()
+console.log(mixinsTest)
+mixinsTest.testHandler()
 const Search = Input.Search
-@observer
 @inject('store')
+@observer
 class MyCourware extends Component{
   constructor(props) {
     super(props)
@@ -45,7 +49,6 @@ class MyCourware extends Component{
   }
   onSearch(val) {
     console.log(this.heigherRef.current)
-
   }
   onMouseDown = (event) => {
     this.isMouseDown = true
@@ -100,5 +103,6 @@ class MyCourware extends Component{
     </div>)
   }
 }
-
+let obj = new MyCourware()
+console.log(obj)
 export default MyCourware

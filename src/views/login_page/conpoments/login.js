@@ -6,8 +6,8 @@ import {
 } from 'antd';
 import './login.scss'
 
-@observer
 @inject('store')
+@observer
 class NormalLoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
@@ -44,11 +44,10 @@ class NormalLoginForm extends Component {
           })(
             <Checkbox>记住密码</Checkbox>
           )}
-          {/* <a className="login-form-forgot" href="">忘记密码？</a> */}
           <Button type="primary" htmlType="submit" className="login-form-button">
             登录
           </Button>
-          Or <a href="javascript:void(0)" onClick={() => this.rejectHandler()}>去注册</a>
+          Or <span onClick={() => this.rejectHandler()}>去注册</span>
         </Form.Item>
       </Form>
     );

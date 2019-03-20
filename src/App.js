@@ -1,10 +1,25 @@
 import React, { Component } from 'react'
 import './App.scss'
-import SliderList from './views/conpoments/slider_list/slider_list'
-import Router from './routers'
-import UploadComponent from './views/conpoments/upload/upload'
-import LoginPage from './views/login_page'
 import {observer, inject} from 'mobx-react'
+import { Route } from "react-router-dom"
+import loadable from 'react-loadable'
+import loading from 'common/loading'
+const LoginPage = loadable({
+  loader: () => import('./views/login_page'),
+  loading
+})
+const SliderList = loadable({
+  loader: () => import('./views/conpoments/slider_list/slider_list'),
+  loading
+})
+const Router = loadable({
+  loader: () => import('./routers'),
+  loading
+})
+const UploadComponent = loadable({
+  loader: () => import('./views/conpoments/upload/upload'),
+  loading
+})
 @inject('store')
 @observer
 class App extends Component {
@@ -20,15 +35,13 @@ class App extends Component {
   }
   render() {
     let isLogin = this.props.store.computedIsLogin;
-    let ReturnConpoment = null;
-    if (!isLogin) {
-      ReturnConpoment = <LoginPage></LoginPage>;
-    } else {
-      ReturnConpoment = <><SliderList></SliderList><div className="nav-right"><Router></Router></div><UploadComponent></UploadComponent></>;
-    }
     return (
       <div className="App">
-        {ReturnConpoment}
+        <Route path="/" render={() => (
+          isLogin ?
+           <><SliderList></SliderList><div className="nav-right"><Router></Router></div><UploadComponent></UploadComponent></>
+           : <LoginPage/> 
+        )}/>
       </div>
     )
   }

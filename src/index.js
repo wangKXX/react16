@@ -9,14 +9,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store'
 import { Provider } from 'mobx-react'
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import 'normalize.css'
 import './mock/api'
 
 ReactDOM.render(
 <BrowserRouter>
   <Provider store={store}>
-    <App/>
+    <Route path="/" component={App} />
   </Provider>
 </BrowserRouter>
 , document.getElementById('root'));
