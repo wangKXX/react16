@@ -23,6 +23,7 @@ class MyCourware extends Component{
       isShow: props.store.isShowDialog,
       setting: setting.dark
     }
+    console.log('constructor')
     this.callBackRef = React.createRef()
     this.setSettingHandler = () => {
       this.setState(state => ({
@@ -32,6 +33,31 @@ class MyCourware extends Component{
       }))
     }
     this.heigherRef = React.createRef()
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextProps, nextState, 'shouldComponentUpdate')
+    return true
+  }
+  componentWillMount() {
+    console.log('will mount')
+  }
+  componentDidMount() {
+    console.log('did mount')
+  }
+  componentWillUnmount() {
+    console.log('will unmount')
+  }
+  componentWillReceiveProps(nextprops) {
+    console.log(nextprops, 'WillReceiveProps')
+  }
+  componentWillUpdate(nextprops, nextstate) {
+    console.log(nextprops, nextstate, 'WillUpdate')
+  }
+  componentDidUpdate(prevProps, prevstate) {
+    console.log(prevProps, prevstate, 'DidUpdate')
+  }
+  componentDidCatch(error) {
+    console.log(error)
   }
   isMouseDown = false
   handlerShowClick = () => {
@@ -63,6 +89,7 @@ class MyCourware extends Component{
     this.isMouseDown = false
   }
   render() {
+    console.log('render')
     return (
       <div className="my-courware">
       <div className="grid-box">
